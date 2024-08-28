@@ -10,8 +10,8 @@ def main():
     config = loads(configFile)
     cond = True
     Path("./downloads").mkdir(parents=True, exist_ok=True)
-    paper = download(config['siteDirectory'],config['examNumber'],config['season'],config['year'],"ms",config['paperNumber'],i)
-    filePath = Path(f"./downloads/{config['examNumber']}_{config['season']}{config['year']}_ms_{config['paperNumber']}{i}.pdf")
+    paper = download(config['siteDirectory'],config['examNumber'],config['season'],config['year'],"ms",config['paperNumber'],config['varient'])
+    filePath = Path(f"./downloads/{config['examNumber']}_{config['season']}{config['year']}_ms_{config['paperNumber']}{config['varient']}.pdf")
     filePath.write_bytes(paper.content)
     try:
         PdfReader(filePath)
