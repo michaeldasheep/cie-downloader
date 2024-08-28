@@ -13,5 +13,6 @@ CIE Paper Downloader
 
 ## Working Site Directory URLs
 * https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/ - <b>USE THIS FOR MOST CIRCUMSTANCES</b>
+* https://cie.michaeldasheep.com/{append paper code}/ - <b>My CIE past paper repository
 
 I am working on building my own mirror db for cie papers, downloaded with this contraption. 
