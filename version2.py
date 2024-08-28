@@ -49,6 +49,48 @@ def main():
                 else:
                     pass
         missingFile.write(f"\n\n If nothing was written above in MISSING, you are good! Redownloading may be required for other files or some papers might just not exist on the directory you are downloading from or maybe just not exist entirely.\n")
+    elif (config['yearStart'] < config['yearEnd'] or config['yearStart'] == config['yearEnd']) and (config['season'] == "all"):
+        seasons = ['w','s','m']
+        for season in seasons:
+            if season == "w":
+                examSeason = "Winter"
+            elif season == "s":
+                examSeason = "Summer"
+            elif season == "m":
+                examSeason = "March"
+            missingFile.write(f"\n\nDOWNLOADING from 20{config['yearStart']} to 20{config['yearEnd']} {config['examNumber']} {examSeason} papers {config['paperNumber']} - Missing Files if any:")
+            for year in range(config['yearStart'],config['yearEnd']+1):
+                print(f"Downloading {config['examNumber']} 20{year} {examSeason} paper {config['paperNumber']} ms and qp")
+                for varient in range(0,config['varients']+1):
+                    if varient == 0:
+                        varient = ""
+                    paper = download(config['siteDirectory'],config['examNumber'],season,year,"ms",config['paperNumber'],varient)
+                    filePath = Path(f"./downloads/{config['examNumber']}_{season}{year}_ms_{config['paperNumber']}{varient}.pdf")
+                    filePath.write_bytes(paper.content)
+                    try:
+                        PdfReader(filePath)
+                    except PdfReadError:
+                        print(f"Invalid PDF file ({filePath})")
+                        missingFile.write(f"\nMISSING: {config['examNumber']}_{season}{year}_ms_{config['paperNumber']}{varient}.pdf")
+                        remove(filePath)
+                    else:
+                        pass
+                for varient in range(0,config['varients']+1):
+                    if varient == 0:
+                        varient = ""
+                    paper = download(config['siteDirectory'],config['examNumber'],season,year,"qp",config['paperNumber'],varient)
+                    filePath = Path(f"./downloads/{config['examNumber']}_{season}{year}_qp_{config['paperNumber']}{varient}.pdf")
+                    filePath.write_bytes(paper.content)
+                    try:
+                        PdfReader(filePath)
+                    except PdfReadError:
+                        print(f"Invalid PDF file ({filePath})")
+                        missingFile.write(f"\nMISSING: {config['examNumber']}_{season}{year}_qp_{config['paperNumber']}{varient}.pdf")
+                        remove(filePath)
+                    else:
+                        pass
+        missingFile.write(f"\n\n If nothing was written above in MISSING, you are good! Redownloading may be required for other files or some papers might just not exist on the directory you are downloading from or maybe just not exist entirely.\n")
+    
     else:
         print("ERROR")
     missingFile.close()

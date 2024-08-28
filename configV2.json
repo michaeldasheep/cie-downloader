@@ -1,9 +1,9 @@
 {
     "siteDirectory":"https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/",
     "examNumber":"9702",
-    "season":"w",
-    "yearStart": 10,
+    "season":"m",
+    "yearStart": 16,
     "yearEnd": 24,
-    "paperNumber":1,
+    "paperNumber":2,
     "varients": 3
 }
