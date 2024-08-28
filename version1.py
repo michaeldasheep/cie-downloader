@@ -13,7 +13,7 @@ def main():
         Path("./downloads").mkdir(parents=True, exist_ok=True)
         for i in range(1,4):
             paper = download(config['siteDirectory'],config['examNumber'],config['season'],config['year'],"ms",config['paperNumber'],i)
-            filePath = Path(f"./downloads/config['examNumber']}_{config['season']}{config['year']}_ms_{config['paperNumber']}{i}.pdf")
+            filePath = Path(f"./downloads/{config['examNumber']}_{config['season']}{config['year']}_ms_{config['paperNumber']}{i}.pdf")
             filePath.write_bytes(paper.content)
             try:
                 PdfReader(filePath)
