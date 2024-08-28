@@ -2,6 +2,8 @@
     "siteDirectory":"https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/",
     "examNumber":"0620",
     "season":"w",
-    "year":"22",
-    "paperNumber":"1"
+    "yearStart": 22,
+    "yearEnd": 24,
+    "paperNumber":"1",
+    "varients": 6
 }

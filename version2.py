@@ -6,7 +6,7 @@ from pypdf.errors import PdfReadError
 from os import remove
 
 def main():
-    configFile = open("configV1.json", "r").read()
+    configFile = open("configV2.json", "r").read()
     config = loads(configFile)
     cond = True
     while cond == True:
