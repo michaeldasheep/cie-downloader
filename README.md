@@ -1,10 +1,11 @@
 # cie-downloader
 CIE Paper Downloader
-Can Download CIE papers of internet site.
+\nCan download CIE papers off internet site.
 
 ## Install
 * Clone the git repository
 * Install the requirements.txt file to PIP, preferably in a venv
+* Edit configV2.json or other config with desired download parameters
 
 ## Working Site Directory URLs
 * https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/ - <b>USE THIS FOR MOST CIRCUMSTANCES</b>
