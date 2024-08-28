@@ -10,8 +10,14 @@ def main():
     config = loads(configFile)
     Path("./downloads").mkdir(parents=True, exist_ok=True)
     missingFile = open("./downloads/missing.txt","a")
-    if (config['yearStart'] < config['yearEnd'] or config['yearStart'] == config['yearEnd']) and config['season'] != "all":
-        missingFile.write(f"\n\nDOWNLOADING from 20{config['yearStart']} to 20{config['yearEnd']} {config['examNumber']} papers {config['paperNumber']} - Missing Files if any:")
+    if (config['yearStart'] < config['yearEnd'] or config['yearStart'] == config['yearEnd']) and (config['season'] == "w" or config['season'] == "s" or config['season'] == "m"):
+        if config['season'] == "w":
+            examSeason = "Winter"
+        elif config['season'] == "s":
+            examSeason = "Summer"
+        elif config['season'] == "m":
+            examSeason = "March"
+        missingFile.write(f"\n\nDOWNLOADING from 20{config['yearStart']} to 20{config['yearEnd']} {config['examNumber']} {examSeason} papers {config['paperNumber']} - Missing Files if any:")
         for year in range(config['yearStart'],config['yearEnd']+1):
             print(f"Downloading {config['examNumber']} 20{year} paper {config['paperNumber']} ms and qp")
             for varient in range(0,config['varients']+1):
