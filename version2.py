@@ -19,7 +19,7 @@ def main():
             examSeason = "March"
         missingFile.write(f"\n\nDOWNLOADING from 20{config['yearStart']} to 20{config['yearEnd']} {config['examNumber']} {examSeason} papers {config['paperNumber']} - Missing Files if any:")
         for year in range(config['yearStart'],config['yearEnd']+1):
-            print(f"Downloading {config['examNumber']} 20{year} paper {config['paperNumber']} ms and qp")
+            print(f"Downloading {config['examNumber']} 20{year} {examSeason} paper {config['paperNumber']} ms and qp")
             for varient in range(0,config['varients']+1):
                 if varient == 0:
                     varient = ""
