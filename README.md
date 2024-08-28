@@ -7,6 +7,10 @@ CIE Paper Downloader
 * Install the requirements.txt file to PIP, preferably in a venv
 * Edit configV2.json or other config with desired download parameters
 
+## Limitations
+* Can only download from 2010 onwards
+* Only one season and paper at a time
+
 ## Working Site Directory URLs
 * https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/ - <b>USE THIS FOR MOST CIRCUMSTANCES</b>
 
