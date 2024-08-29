@@ -14,7 +14,7 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
             print(f"Downloading {examNumber} 20{year} {season} paper {paperNumber} ms and qp")
             paperCodes = ['ms','qp']
             for paperCode in paperCodes:
-                for variant in range(0,variants+1):
+                for variant in range(0,variants):
                     if variant == 0 or variant == "0":
                         variant = ""
                     paper = download(siteDirectory,examNumber,examSeason,year,paperCode,paperNumber,variant)
@@ -34,7 +34,7 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
                 print(f"Downloading {examNumber} 20{year} {season} paper {paperNumberVar} ms and qp")
                 paperCodes = ['ms','qp']
                 for paperCode in paperCodes:
-                    for variant in range(0,variants+1):
+                    for variant in range(0,variants):
                         if variant == 0 or variant == "0":
                             variant = ""
                         paper = download(siteDirectory,examNumber,examSeason,year,paperCode,paperNumberVar,variant)
@@ -44,7 +44,7 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
                             PdfReader(filePath)
                         except PdfReadError:
                             print(f"Invalid PDF file ({filePath})")
-                            missingFile.write(f"\nMISSING: {examNumber}_{examSeason}{year}_ms_{paperNumberVar}{variant}.pdf")
+                            missingFile.write(f"\nMISSING: {examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf")
                             remove(filePath)
                         else:
                             pass
