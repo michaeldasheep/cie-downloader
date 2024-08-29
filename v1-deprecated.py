@@ -6,7 +6,7 @@ from pypdf.errors import PdfReadError
 from os import remove
 
 def main():
-    configFileLocation = open("config.v1.json", "r")
+    configFileLocation = open("config.deprecatedv1.json", "r")
     configFile = configFileLocation.read()
     config = loads(configFile)
     configFileLocation.close() # Addressed bug opened by bohrium2b
