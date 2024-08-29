@@ -14,7 +14,7 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
             print(f"Downloading {examNumber} 20{year} {season} paper {paperNumber} ms and qp")
             paperCodes = ['ms','qp']
             for paperCode in paperCodes:
-                for variant in range(0,variants):
+                for variant in range(0,variants+1):
                     if variant == 0 or variant == "0":
                         variant = ""
                     paper = download(siteDirectory,examNumber,examSeason,year,paperCode,paperNumber,variant)
@@ -34,7 +34,7 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
                 print(f"Downloading {examNumber} 20{year} {season} paper {paperNumberVar} ms and qp")
                 paperCodes = ['ms','qp']
                 for paperCode in paperCodes:
-                    for variant in range(0,variants):
+                    for variant in range(0,variants+1):
                         if variant == 0 or variant == "0":
                             variant = ""
                         paper = download(siteDirectory,examNumber,examSeason,year,paperCode,paperNumberVar,variant)
