@@ -1,9 +1,10 @@
 {
     "siteDirectory":"https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/",
-    "examNumber":"0620",
+    "examNumber":"9700",
     "season":"all",
     "yearStart": 10,
     "yearEnd": 24,
-    "paperNumber": 6,
+    "paperNumber": 1,
+    "paperNumberEnd": 5,
     "variants": 3
 }
