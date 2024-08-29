@@ -53,9 +53,10 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
         exit()
 
 def main():
-    configFile = open("config.json", "r").read()
+    configFileLocation = open("config.json", "r")
+    configFile = configFileLocation.read()
     config = loads(configFile)
-    configFile.close() # Addressed bug opened by bohrium2b
+    configFileLocation.close() # Addressed bug opened by bohrium2b
     Path("./downloads").mkdir(parents=True, exist_ok=True)
     missingFile = open("./downloads/missing.txt","a")
     if (config['yearStart'] < config['yearEnd'] or config['yearStart'] == config['yearEnd']) and (config['season'] == "w" or config['season'] == "s" or config['season'] == "m"):

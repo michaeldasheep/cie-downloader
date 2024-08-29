@@ -9,9 +9,10 @@ from os import remove
 # Download a single past paper with this
 
 def main():
-    configFile = open("config.standalone.json", "r").read()
+    configFileLocation = open("config.standalone.json", "r")
+    configFile = configFileLocation.read()
     config = loads(configFile)
-    configFile.close()
+    configFileLocation.close() # Addressed bug opened by bohrium2b
     cond = True
     Path("./downloads").mkdir(parents=True, exist_ok=True)
     paper = download(config['siteDirectory'],config['examNumber'],config['season'],config['year'],"ms",config['paperNumber'],config['varient'])
