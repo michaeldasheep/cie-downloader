@@ -1,6 +1,6 @@
 # cie-downloader
 CIE Paper Downloader
-\nCan download CIE papers off internet site.
+<br>Can download CIE papers off internet site.
 
 ## Install
 * Clone the git repository
@@ -9,7 +9,7 @@ CIE Paper Downloader
 
 ## Limitations
 * Can only download from 2010 onwards
-* Only one season and paper at a time
+* Only one paper at a time
 
 ## Working Site Directory URLs
 * https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/ - <b>USE THIS FOR MOST CIRCUMSTANCES</b>
