@@ -5,7 +5,8 @@ CIE Paper Downloader
 ## Install
 * Clone the git repository
 * Install the requirements.txt file to PIP, preferably in a venv
-* Edit configV2.json or other config with desired download parameters
+* Edit config.json or other config with desired download parameters
+* Run v2-stable.py
 
 ## Limitations
 * Can only download from 2010 onwards

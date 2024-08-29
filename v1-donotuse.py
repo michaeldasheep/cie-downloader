@@ -6,8 +6,9 @@ from pypdf.errors import PdfReadError
 from os import remove
 
 def main():
-    configFile = open("configV1.json", "r").read()
+    configFile = open("config.v1.json", "r").read()
     config = loads(configFile)
+    configFile.close()
     cond = True
     while cond == True:
         Path("./downloads").mkdir(parents=True, exist_ok=True)

@@ -5,6 +5,9 @@ from pypdf import PdfReader
 from pypdf.errors import PdfReadError
 from os import remove
 
+# CIE Past Paper Downloader V2
+# Download Multiple Past Papers with this
+
 def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,paperNumber,paperNumberEnd,variants,missingFile):
     if paperNumberEnd == paperNumber:
         for year in range(yearStart,yearEnd+1):
@@ -50,7 +53,8 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
         exit()
 
 def main():
-    configFile = open("configV2.json", "r").read()
+    configFile = open("config.json", "r").read()
+    configFile.close() # Addressed bug opened by bohrium2b
     config = loads(configFile)
     Path("./downloads").mkdir(parents=True, exist_ok=True)
     missingFile = open("./downloads/missing.txt","a")

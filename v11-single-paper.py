@@ -5,9 +5,13 @@ from pypdf import PdfReader
 from pypdf.errors import PdfReadError
 from os import remove
 
+# CIE Past Paper Downloader V1.1
+# Download a single past paper with this
+
 def main():
-    configFile = open("configV1.1.json", "r").read()
+    configFile = open("config.standalone.json", "r").read()
     config = loads(configFile)
+    configFile.close()
     cond = True
     Path("./downloads").mkdir(parents=True, exist_ok=True)
     paper = download(config['siteDirectory'],config['examNumber'],config['season'],config['year'],"ms",config['paperNumber'],config['varient'])
