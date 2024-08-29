@@ -18,13 +18,13 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
                     if variant == 0 or variant == "0":
                         variant = ""
                     paper = download(siteDirectory,examNumber,examSeason,year,paperCode,paperNumber,variant)
-                    filePath = Path(f"./downloads/{examNumber}_{examSeason}{year}_ms_{paperNumber}{variant}.pdf")
+                    filePath = Path(f"./downloads/{examNumber}_{examSeason}{year}_{paperCode}_{paperNumber}{variant}.pdf")
                     filePath.write_bytes(paper.content)
                     try:
                         PdfReader(filePath)
                     except PdfReadError:
                         print(f"Invalid PDF file ({filePath})")
-                        missingFile.write(f"\nMISSING: {examNumber}_{examSeason}{year}_ms_{paperNumber}{variant}.pdf")
+                        missingFile.write(f"\nMISSING: {examNumber}_{examSeason}{year}_{paperCode}_{paperNumber}{variant}.pdf")
                         remove(filePath)
                     else:
                         pass
@@ -38,7 +38,7 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
                         if variant == 0 or variant == "0":
                             variant = ""
                         paper = download(siteDirectory,examNumber,examSeason,year,paperCode,paperNumberVar,variant)
-                        filePath = Path(f"./downloads/{examNumber}_{examSeason}{year}_ms_{paperNumberVar}{variant}.pdf")
+                        filePath = Path(f"./downloads/{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf")
                         filePath.write_bytes(paper.content)
                         try:
                             PdfReader(filePath)
