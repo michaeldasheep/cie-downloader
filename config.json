@@ -1,10 +1,11 @@
 {
     "siteDirectory":"https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/",
-    "examNumber":"9701",
+    "examNumber":"0610",
     "season":"all",
-    "yearStart": 10,
+    "yearStart": 23,
     "yearEnd": 24,
     "paperNumber": 1,
-    "paperNumberEnd": 5,
-    "variants": 6
+    "paperNumberEnd": 6,
+    "variants": 3,
+    "writePaperList": 1
 }

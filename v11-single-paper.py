@@ -15,7 +15,7 @@ def main():
     configFileLocation.close() # Addressed bug opened by bohrium2b
     cond = True
     Path("./downloads").mkdir(parents=True, exist_ok=True)
-    paper = download(config['siteDirectory'],config['examNumber'],config['season'],config['year'],"ms",config['paperNumber'],config['varient'])
+    successCode,paper = download(config['siteDirectory'],config['examNumber'],config['season'],config['year'],"ms",config['paperNumber'],config['varient'])
     filePath = Path(f"./downloads/{config['examNumber']}_{config['season']}{config['year']}_ms_{config['paperNumber']}{config['varient']}.pdf")
     filePath.write_bytes(paper.content)
     try:
@@ -25,7 +25,7 @@ def main():
         remove(filePath)
     else:
         pass
-    paper2 = download(config['siteDirectory'],config['examNumber'],config['season'],config['year'],"qp",config['paperNumber'],config['varient'])
+    successCode2,paper2 = download(config['siteDirectory'],config['examNumber'],config['season'],config['year'],"qp",config['paperNumber'],config['varient'])
     filePath2 = Path(f"./downloads/{config['examNumber']}_{config['season']}{config['year']}_qp_{config['paperNumber']}{config['varient']}.pdf")
     filePath2.write_bytes(paper2.content)
     try:
