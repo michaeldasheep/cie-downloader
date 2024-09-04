@@ -1,8 +1,7 @@
 from requests import get
 
-def download(siteDirectory:str, examNumber, season:str, year:int, type:str, paperNumber, paperVarient):
+def download(url:str):
     userAgent = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edge/123.0.2420.81'}
-    url = f"{siteDirectory}{examNumber}_{season}{year}_{type}_{paperNumber}{paperVarient}.pdf"
     try:
         response = get(url, headers=userAgent, timeout=60)
     except ConnectionError:

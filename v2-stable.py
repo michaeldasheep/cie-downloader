@@ -37,7 +37,8 @@ def runDownload(missingFile,variant: int,siteDirectory,examNumber,examSeason,yea
             varient = ""
         else:
             varient = variant
-        successCode,paper = download(siteDirectory,examNumber,examSeason,year,paperCode,paperNumberVar,varient)
+        url = f"{siteDirectory}{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf"
+        successCode,paper = download(url)
         if successCode == True:
             filePath = Path(f"./downloads/{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf")
             filePath.write_bytes(paper.content)
