@@ -14,47 +14,55 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
         if paperFileWriteParam == True:
             paperNumberFile = open(f"./downloads/{paperNumber}.paperList.txt","a")
         for year in range(yearStart,yearEnd+1):
-            print(f"Downloading {examNumber} 20{year} {season} paper {paperNumber} qp and ms")
+            if year < 10:
+                year2 = f"0{year}"
+            else:
+                year2 = year
+            print(f"Downloading {examNumber} 20{year2} {season} paper {paperNumber} qp and ms")
             for paperCode in paperCodes:
                 for variant in range(0,variants+1):
-                    runDownload(missingFile,variant,siteDirectory,examNumber,examSeason,year,paperCode,paperNumber,paperNumberFile)
+                    runDownload(missingFile,variant,siteDirectory,examNumber,examSeason,year2,paperCode,paperNumber,paperNumberFile)
     elif paperNumber < paperNumberEnd:
         for paperNumberVar in range(paperNumber,paperNumberEnd+1):
             if paperFileWriteParam == True:
                 paperNumberFile = open(f"./downloads/{paperNumberVar}.paperList.txt","w")
             for year in range(yearStart,yearEnd+1):
-                print(f"Downloading {examNumber} 20{year} {season} paper {paperNumberVar} qp and ms")
+                if year < 10:
+                    year2 = f"0{year}"
+                else:
+                    year2 = year
+                print(f"Downloading {examNumber} 20{year2} {season} paper {paperNumberVar} qp and ms")
                 for paperCode in paperCodes:
                     for variant in range(0,variants+1):
-                        runDownload(missingFile,variant,siteDirectory,examNumber,examSeason,year,paperCode,paperNumberVar,paperNumberFile)
+                        runDownload(missingFile,variant,siteDirectory,examNumber,examSeason,year2,paperCode,paperNumberVar,paperNumberFile)
     else:
         print("ERROR")
         exit()
 
-def runDownload(missingFile,variant: int,siteDirectory,examNumber,examSeason,year: int,paperCode: str,paperNumberVar,paperNumberFile):
+def runDownload(missingFile,variant: int,siteDirectory,examNumber,examSeason,year,paperCode: str,paperNumberVar,paperNumberFile):
     if not path.exists(f"./downloads/{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf"):
         if variant == 0:
             varient = ""
         else:
             varient = variant
-        url = f"{siteDirectory}{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf"
+        url = f"{siteDirectory}{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{varient}.pdf"
         successCode,paper = download(url)
         if successCode == True:
-            filePath = Path(f"./downloads/{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf")
+            filePath = Path(f"./downloads/{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{varient}.pdf")
             filePath.write_bytes(paper.content)
             try:
                 PdfReader(filePath)
             except PdfReadError:
                 print(f"Invalid PDF file ({filePath})")
-                missingFile.write(f"\nMISSING: {examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf")
+                missingFile.write(f"\nMISSING: {examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{varient}.pdf")
                 remove(filePath)
             else:
                 if paperFileWriteParam == True:
-                    paperNumberFile.write(f"{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf\n")
+                    paperNumberFile.write(f"{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{varient}.pdf\n")
         elif successCode == False:
-            missingFile.write(f"\nMISSING: {examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf")
+            missingFile.write(f"\nMISSING: {examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{varient}.pdf")
     else:
-        print(f"{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf - Already Exists, skipping")
+        print(f"{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{varient}.pdf - Already Exists, skipping")
 
 def setWriteParam(config):
     global paperFileWriteParam
@@ -84,14 +92,14 @@ def main():
             examSeason = "March"
         missingFile.write(f"\n\nDOWNLOADING from 20{config['yearStart']} to 20{config['yearEnd']} {config['examNumber']} {examSeason} papers {config['paperNumber']} - Missing Files if any:")
         downloadLoop(config['siteDirectory'],config['yearStart'],config['yearEnd'],config['examNumber'],config['season'],examSeason,config['paperNumber'],config['paperNumberEnd'],config['variants'],missingFile)
-        missingFile.write(f"\n\n If nothing was written above in MISSING, you are good! Redownloading may be required for other files or some papers might just not exist on the directory you are downloading from or maybe just not exist entirely.\n")
+        missingFile.write(f"\n\nIf nothing was written above in MISSING, you are good! Redownloading may be required for other files or some papers might just not exist on the directory you are downloading from or maybe just not exist entirely.\n")
     elif (config['yearStart'] < config['yearEnd'] or config['yearStart'] == config['yearEnd']) and (config['season'] == "all"):
         seasons = {"w":"Winter","s":"Summer","m":"March"}
         for season in seasons.keys():
             examSeason = seasons[season]
             missingFile.write(f"\n\nDOWNLOADING from 20{config['yearStart']} to 20{config['yearEnd']} {config['examNumber']} {examSeason} papers {config['paperNumber']} - Missing Files if any:")
             downloadLoop(config['siteDirectory'],config['yearStart'],config['yearEnd'],config['examNumber'],season,examSeason,config['paperNumber'],config['paperNumberEnd'],config['variants'],missingFile)
-        missingFile.write(f"\n\n If nothing was written above in MISSING, you are good! Redownloading may be required for other files or some papers might just not exist on the directory you are downloading from or maybe just not exist entirely.\n")
+        missingFile.write(f"\n\nIf nothing was written above in MISSING, you are good! Redownloading may be required for other files or some papers might just not exist on the directory you are downloading from or maybe just not exist entirely.\n")
     else:
         print("ERROR")
     missingFile.close()

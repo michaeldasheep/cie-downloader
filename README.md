@@ -9,7 +9,6 @@ CIE Paper Downloader
 * Run v2-stable.py
 
 ## Limitations
-* Can only download from 2010 onwards
 * Only one paper at a time
 
 ## Working Site Directory URLs
