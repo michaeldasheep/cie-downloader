@@ -1,6 +1,6 @@
-# cie-downloader
-CIE Paper Downloader
-<br>Can download CIE papers off internet site.
+# pastpapers-downloader
+Past Papers Downloader
+<br>Can download past papers off internet site.
 
 ## Install
 * Clone the git repository
