@@ -13,4 +13,4 @@ Past Papers Downloader
 
 ## Working Site Directory URLs
 * https://pastpapers.papacambridge.com/directories/CAIE/CAIE-pastpapers/upload/ - <b>USE THIS FOR MOST CIRCUMSTANCES</b>
-* https://cie.michaeldasheep.com/ {append paper code} / - <b>My CIE past paper repository</b>. This repo doesn't have all the exams but only certain papers. 
+* https://pastpapers.michaeldasheep.com/ {append paper code} / - <b>My past paper repository</b>. This repo doesn't have all the exams but only certain papers. 
