@@ -13,6 +13,8 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
     if paperNumberEnd == paperNumber or paperNumberEnd == 0:
         if paperFileWriteParam == True:
             paperNumberFile = open(f"./downloads/{paperNumber}.paperList.txt","a")
+        else:
+            paperNumberFile = "null"
         for year in range(yearStart,yearEnd+1):
             if year < 10:
                 year2 = f"0{year}"
@@ -26,6 +28,8 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
         for paperNumberVar in range(paperNumber,paperNumberEnd+1):
             if paperFileWriteParam == True:
                 paperNumberFile = open(f"./downloads/{paperNumberVar}.paperList.txt","w")
+            else:
+                paperNumberFile = "null"
             for year in range(yearStart,yearEnd+1):
                 if year < 10:
                     year2 = f"0{year}"
@@ -62,7 +66,7 @@ def runDownload(missingFile,variant: int,siteDirectory,examNumber,examSeason,yea
         elif successCode == False:
             missingFile.write(f"\nMISSING: {examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{varient}.pdf")
     else:
-        print(f"{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{varient}.pdf - Already Exists, skipping")
+        print(f"{examNumber}_{examSeason}{year}_{paperCode}_{paperNumberVar}{variant}.pdf - Already Exists, skipping")
 
 def setWriteParam(config):
     global paperFileWriteParam
