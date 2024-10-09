@@ -24,6 +24,8 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
             for paperCode in paperCodes:
                 for variant in range(0,variants+1):
                     runDownload(missingFile,variant,siteDirectory,examNumber,examSeason,year2,paperCode,paperNumber,paperNumberFile)
+        if paperFileWriteParam == True:
+            paperNumberFile.close()
     elif paperNumber < paperNumberEnd:
         for paperNumberVar in range(paperNumber,paperNumberEnd+1):
             if paperFileWriteParam == True:
@@ -39,6 +41,8 @@ def downloadLoop(siteDirectory,yearStart,yearEnd,examNumber,examSeason,season,pa
                 for paperCode in paperCodes:
                     for variant in range(0,variants+1):
                         runDownload(missingFile,variant,siteDirectory,examNumber,examSeason,year2,paperCode,paperNumberVar,paperNumberFile)
+            if paperFileWriteParam == True:
+                paperNumberFile.close()
     else:
         print("ERROR")
         exit()
